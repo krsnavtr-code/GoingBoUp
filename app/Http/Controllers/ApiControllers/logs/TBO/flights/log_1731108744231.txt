@@ -1,0 +1,4 @@
+Request:- https://tboapi.travelboutiqueonline.com/AirAPI_V10/AirService.svc/rest/Search
+{"AdultCount":1,"ChildCount":0,"InfantCount":0,"JourneyType":"1","Segments":[{"Origin":"BOM","Destination":"DEL","FlightCabinClass":1,"PreferredDepartureTime":"2024-10-18T00: 00: 00","PreferredArrivalTime":"2024-10-18T00: 00: 00"}],"DirectFlight":"false","OneStopFlight":"false","PreferredAirlines":null,"Sources":null,"PreferredCurrency":"INR","TokenId":"f4d58c05-c882-460f-ae57-5f410e10df69","EndUserIp":"157.55.39.194"}
+Response
+{"Response":{"ResponseStatus":3,"Error":{"ErrorCode":3,"ErrorMessage":"Departure Date can not less than today date"},"TraceId":"6838098c-fdf9-44d0-aee0-2a63d3c390a6"}}
