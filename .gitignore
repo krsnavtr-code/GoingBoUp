@@ -20,4 +20,4 @@ yarn-error.log
 .vscode.zip
 
 # Large directories
-/public/
+/public/images
