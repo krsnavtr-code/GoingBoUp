@@ -1,7 +1,9 @@
 <header>
     <div class="header_main">
-        <a href="{{ url('') }}" class="brand">
+        <a href="{{ url('/') }}" class="brand">
             <img src="{{ url('images/logo.png') }}" alt="logo">
+            <!-- <img src="../../../../../public/images/flight/planes-runway.png" alt=""> -->
+
         </a>
         <nav class="prime_nav rflex active">
             <li>
@@ -16,33 +18,35 @@
                     <span style="margin: 0px 0px 0px 5px;">Hotels</span>
                 </a>
             </li>
-            {{-- <li>
+            <!-- <li>
                 <a href="{{ url('') }}"> 
                     <img src="{{ url('images/web assets/bus-logo.png') }}" class="web_logo"  alt="logo">
                     <span>Bus</span>
                 </a>
-            </li> --}}
+            </li>  -->
             <li>
                 <a href="{{ url('cab') }}">
                     <img src="{{ url('images/web assets/icon-4.png') }}" style="padding: 0 5px 6px 0;"  class="web_logo" alt="logo">
                     <span> Cabs </span>
                 </a>
             </li>
+
+
             <li>
-                <a href="{{ url('packages') }}" >
-                    <img src="{{ url('images/web assets/icon-2.png') }}" style="padding-bottom: 6px;" class="web_logo" alt="logo">
+                <a href="{{ url('packages') }}" target="_blank">
+                    <img src="{{ url('images/web assets/icon-2.png') }}" class="web_logo" alt="logo">
                     <span style="margin: 0px 0px 0px 5px;">Holiday Packages</span>
                 </a>
             </li>
 
-            {{-- <li class="special_box">
+            <!-- <li class="special_box">
                 <a href="{{ url('special-hotel') }}" target="_blank">
                     <h6 class="brand">
-                    <span>  Special Hotels </span>
-                </h6>
+                        <span>  Special Hotels </span>
+                    </h6>
                 </a>
-                
-            </li> --}}
+            </li>  -->
+
             <li class="club_box">
                 <a href="{{ url('membership') }}" target="_blank">
                     <h6 class="brand"><span>G</span><span>BO </span>
@@ -61,6 +65,13 @@
                     <span>Blogs</span>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo e(url('blogs')); ?>">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Need Help</span>
+                </a>
+            </li>
+            
         </nav>
         <nav class="sec_nav rflex aic">
             @if (session()->has('user'))
@@ -121,7 +132,7 @@
                 {{-- <li><a href="{{ url('special-hotel') }}" target="_blank"><i class="fa-solid fa-hotel"></i><span   class="brand"><span>G</span><span>BO </span>   Special Hotels</span></a></li> --}}
                 <li><a href="{{ url('cab') }}" target="_blank"><i class="fa-solid fa-cab"></i><span
                             class="brand"><span>G</span><span>BO </span>
-                            Cabs</span></a></li>
+                              Special Cabs</span></a></li>
                 <li><a href="{{ url('packages') }}" target="_blank"><i class="fa-solid fa-badge-percent"></i>Holiday
                         Packages</a></li>
                 <li>
