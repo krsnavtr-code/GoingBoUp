@@ -21,6 +21,5 @@ yarn-error.log
 
 # Large directories
 /public/
-/storage/
 /tests
 /.well-known
