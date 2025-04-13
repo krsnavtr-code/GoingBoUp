@@ -423,12 +423,14 @@
                     // Check if hotel_images is already an array or needs to be decoded
                     $images = is_array($hotel->hotel_images) ? $hotel->hotel_images : json_decode($hotel->hotel_images, true);
                   @endphp
-                  @foreach($images as $image)
-                    <div class="item">
-                      {{-- "{{ url('/images/special-hotels/' . $image->type) }}" --}}
-                      <img src="{{ asset('/images/special-hotels/' . $image['type']) }}" alt="{{ $hotel->hotel_name }}" class="img-fluid logo">
-                    </div>
-                  @endforeach
+                  @if($images)
+                    @foreach($images as $image)
+                      <div class="item">
+                        {{-- "{{ url('/images/special-hotels/' . $image->type) }}" --}}
+                        <img src="{{ asset('/images/special-hotels/' . $image['type']) }}" alt="{{ $hotel->hotel_name }}" class="img-fluid logo">
+                      </div>
+                    @endforeach
+                  @endif
                 </div>
               </div>
               <div class="text-box">
@@ -440,7 +442,7 @@
                     <div class="reviews">
                       @for ($i = 0; $i < $hotel->hotel_rating; $i++)
                         <i class="fa-solid fa-star"></i>
-                        @endfor
+                      @endfor
                     </div>
                   </div>
                   <p class="address">
