@@ -1,12 +1,4 @@
 <style>
-    /* .dayContainer {
-        gap: 1rem;
-    } */
-
-    /* .flatpickr-day {
-        padding: 1rem;
-    } */
-
     .flatpickr-day:hover{
         margin: 6px;
     }
@@ -22,22 +14,19 @@
     }
 
     @media only screen and (max-width:768px){
-        label{
-            display: none;
-        }
         .trip_types .trip_type label {
             display: block;
         }
     }
 </style>
 <form action="{{ url('flight/search') }}" method="get" class="flight_form" id="flight_form">
-    <div class="trip_types jcsb">
-        <div class="rflex">
-            <div class="trip_type">
+    <div class="trip_types jcsb mb-32" >
+        <div class="trip_types_wrap">
+            <div class="trip_type" style="border-radius: 10px 0px 0px 10px;">
                 <input type="radio" name="journey_type" id="x1" checked value="1">
                 <label for="x1">One Way</label>
             </div>
-            <div class="trip_type">
+            <div class="trip_type" style="border-radius: 0px 10px 10px 0px;">
                 <input type="radio" name="journey_type" id="x2" value="2">
                 <label for="x2">Round Trip</label>
             </div>
@@ -45,10 +34,10 @@
 
         <div class="offer-box">
             <ul class="offer-window">
-                <li>Join the club of happy travellers.</li>
-                <li>Get 12% OFF on flights as a welcome gift.</li>
-                <li>24x7 Customer Support.</li>
-                <li>Hassle Free Bookings.</li>
+                <li style="text-align: center; margin: auto;">Join the club of happy travellers.</li>
+                <li style="text-align: center; margin: auto;">Get 12% OFF on flights as a welcome gift.</li>
+                <li style="text-align: center; margin: auto;">24x7 Customer Support.</li>
+                <li style="text-align: center; margin: auto;">Hassle Free Bookings.</li>
             </ul>
         </div>
     </div>
@@ -59,6 +48,7 @@
                     <div class="vu-select from-select">
                         <div class="vu-content">
                             <label for="">From</label>
+                            <hr>
                             <input type="text" id="fromInput" placeholder="Enter City or airport" class="vu-input"     autocomplete="off" required>
                             <input type="hidden" class="airport_code" name="from">
                             <p><span class="airport_code a_code"> </span><span class="airport_name"> </span></p>
@@ -71,7 +61,8 @@
                     <div class="vu-select to-select">
                         <div class="vu-content">
                             <label for="">To</label>
-                            <input type="text" name="" id="toInput" placeholder="    Enter City or airport"   class="vu-input" autocomplete="off" required>
+                            <hr>
+                            <input type="text" name="" id="toInput" placeholder="Enter City or airport"   class="vu-input" autocomplete="off" required>
                             <input type="hidden" class="airport_code" name="to">
                             <p><span class="airport_code a_code"> </span><span class="airport_name"> </span></p>
                         </div>
@@ -84,8 +75,9 @@
             <div class="wrapper dates">
                 <div class="col-6">
                     <div class="vu-date">
-                        <div class="vu-content">
+                        <div class="vu-content mt-10">
                             <label for="dep_date">Departure</label>
+                            <hr>
                             <input readonly name="dep_date" id="dep_date" placeholder="DD/MM/YY" required >
                             <p> </p>
                         </div>
@@ -93,8 +85,9 @@
                 </div>
                 <div class="col-6">
                     <div class="vu-date">
-                        <div class="vu-content">
+                        <div class="vu-content mt-10">
                             <label for="">Return</label>
+                            <hr>
                             <input readonly name="ret_date" id="ret_date" placeholder="DD/MM/YY">
                             <p> </p>
                         </div>
@@ -106,12 +99,11 @@
 
         </div>
 
-
-
         <div class="col-3 paxs">
             <div class="wrapper pax" tabindex="0">
-                <div class="vu-content">
+                <div class="vu-content mt-10">
                     <label for="">Travellers and Class</label>
+                    <hr>
                     <div class="desc" id="pass_det">1 Adult</div>
                     <p id="fclass">Any Class</p>
                 </div>
@@ -178,14 +170,14 @@
     </div>
     <div class="fare_type_box">
         <div class="cflex" style="gap:20px">
-            <div class="rflex aic">
+            <div class="rflex aic fare_type_box_header">
 
-                <p><b> Special Fares </b> </p>
+                <p><b class="special_fare"> Special Fares </b> </p>
 
                 <div class="fare_types rflex">
 
                     <div class="fare_type">
-                        <div class="ft_ra">
+                        <div class="ft_ra d_none">
                             <input type="radio" name="fare_type" id="f2" value="1">
                             <img loading="lazy" src="{{ url('images/flight/soldier.png') }}" width="32"
                                 height="32" alt="flightimage">
@@ -194,23 +186,23 @@
 
                     </div>
                     <div class="fare_type">
-                        <div class="ft_ra">
+                        <div class="ft_ra d_none">
                             <input type="radio" name="fare_type" id="f3" value="2">
                             <img loading="lazy" src="{{ url('images/flight/senior.png') }}" width="32"
                                 height="32" alt="flightimage">
                             <label for="f3">Senior Citizen</label>
                         </div>
                     </div>
-                    <div class="fare_type">
-                        <div class="ft_ra">
+                    <div class="fare_type position_drage_1">
+                        <div class="ft_ra d_none">
                             <input type="radio" name="fare_type" id="f4" value="3">
                             <img loading="lazy" src="{{ url('images/flight/student.png') }}" width="32"
                                 height="32" alt="flightimage">
                             <label for="f4">Student</label>
                         </div>
                     </div>
-                    <div class="fare_type">
-                        <div class="ft_ra">
+                    <div class="fare_type position_drage_2">
+                        <div class="ft_ra d_none">
                             <input type="radio" name="fare_type" id="f5" value="4">
                             <img loading="lazy" src="{{ url('images/flight/doctor.png') }}" width="32"
                                 height="32" alt="flightimage">
@@ -223,7 +215,9 @@
         </div>
 
     </div>
-    <button type="submit" class="btn search_btn" id="btn" ><i class="fa-solid fa-magnifying-glass"></i>Search Flights</button>
+    <div class="flight_form_button">
+        <button type="submit" class="btn search_btn" id="btn" ><i class="fa-solid fa-magnifying-glass"></i>Search Flights</button>
+    </div>
 </form>
 
 @push('js')

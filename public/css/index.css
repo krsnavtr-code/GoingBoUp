@@ -16,9 +16,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: dodgerblue;
+    background-image: linear-gradient(109.6deg, rgba(238, 137, 55, 0.746) 11.2%, rgb(238 136 55 / 46%) 42%, rgb(37 155 214 / 51%) 71.5%, rgba(44, 159, 216, 0.711) 100.2%);
+    /* background-image: linear-gradient(109.6deg, rgb(238 136 55) 11.2%, rgb(238 136 55 / 46%) 42%, rgb(37 155 214 / 51%) 71.5%, rgb(44 158 216) 100.2%); */
     z-index: -1;
-    height: 45vh;
+    height: 100%;
     isolation: isolate;
 }
 
@@ -33,7 +34,7 @@ body {
 
 .forms_wrapper {
     z-index: 1;
-    padding: 60px 40px 40px;
+    padding: 10px 40px 40px;
     filter: drop-shadow(0 0 30px #00000033);
     position: relative;
 }
@@ -46,10 +47,23 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-inline: auto;
-    transform: translateY(50%);
+    transform: translateY(20%);
     z-index: 2;
     box-shadow: 0 0 10px 0 #00000033;
 }
+
+.form_type,
+.trip_type {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.form_type:hover,
+.trip_type:hover {
+    transform: translateY(-5px);
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+}
+
 
 .forms_wrapper .form_types .form_type {
     display: flex;
@@ -65,7 +79,7 @@ body {
 }
 
 .forms_wrapper .form_types .form_type i {
-    font-size: 2rem;
+    font-size: 1.7rem;
     /* margin-right: 10px; */
 }
 
@@ -82,26 +96,34 @@ body {
     border-radius: 8px;
 }
 
-/* .forms_wrapper .form_types .form_type:not(.active) {
-    background: #002456;
-    color: white;
-} */
 .forms_wrapper form {
-    background: white;
+    background: #ffffffc7;
     padding: 3rem;
     border-radius: 10px;
     position: relative;
 }
 
 /* Flight Form goes here */
+.mb-32 {
+    margin-bottom: 35px;
+}
+
+.trip_types_wrap {
+    display: flex;
+    border-radius: 10px !important;
+    /* background-color: #002456; */
+}
+
 form .trip_types,
 form .trip_types .trip_type {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
+
 form .trip_types {
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
     position: relative;
 }
 
@@ -110,11 +132,11 @@ form .trip_types .trip_type {
     -webkit-box-align: center;
     align-items: center;
     gap: 1rem;
-    margin-right: 8px;
+    /* margin-right: 8px; */
     cursor: pointer;
     font-weight: 700;
     padding: 8px 16px;
-    border-radius: 100px;
+    border-radius: 10px 0px 0px 10px;
     background: rgba(34, 118, 227, 0.1);
     color: var(--fv_sec);
 }
@@ -190,6 +212,7 @@ form .fields .wrapper {
     display: flex;
     gap: 5px;
     margin-right: 5px;
+    border-radius: 8px;
 }
 
 .vu-select,
@@ -211,10 +234,6 @@ form .fields .wrapper {
 }
 
 :is(.vu-select, .vu-date, .pax) label {
-    position: absolute;
-    top: -10px;
-    transform: translateY(-50%);
-    background: white;
     font-weight: 600;
     left: 10%;
     font-size: 1.3rem;
@@ -269,19 +288,26 @@ form .fields .wrapper {
     color: var(--gray_600);
 }
 
+.flight_form_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 form .search_btn {
-    font-weight: 700;
+    /* font-weight: 700; */
     text-align: center;
     border: none;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     font-size: 1.6rem;
     background: var(--fv_prime);
     color: white;
-    padding: 10px 30px;
-    position: absolute;
-    bottom: 0%;
-    right: 36%;
-    transform: translate(-50%, 50%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+form .search_btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 form .search_btn i {
@@ -364,88 +390,113 @@ form .search_btn i {
     border-bottom: 1px dashed var(--gray_400);
 }
 
+/* Base Styles */
+.wrapper {
+    /* height: 110px; */
+    padding: 5px;
+}
+
+.fare_type_box_header {
+    flex-direction: column;
+}
+
+.vu-select hr,
+.vu-content hr {
+    width: 90%;
+    margin: 0 auto;
+    border: none;
+    height: 1px;
+    background-color: var(--gray_400);
+}
+
 .fare_type_box {
-    padding: 1rem;
-    margin-top: 20px;
-    background: linear-gradient(135deg,
-            rgb(133 202 235) 0%,
-            rgb(243 193 193 / 0%) 100%);
+    border-radius: 12px;
+    width: 100%;
+}
+
+.cflex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.special_fare {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.fare_types {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.fare_type {
+    background-color: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
+    width: 115px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.fare_type_box label {
-    font-weight: 600;
-    cursor: pointer;
+.fare_type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f1f8ff;
 }
 
-.fare_type_box .fare_types {
-    width: 100%;
-    gap: 15px;
-    padding: 0 2rem;
-    overflow: auto;
-    scrollbar-width: none;
-}
-
-.fare_type_box .fare_type {
-    align-items: center;
-    display: flex;
-    position: relative;
-}
-
-.fare_type_box .fare_type input {
-    margin-right: 5px;
-}
-
-.fare_type_box :is(p) {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgb(34, 34, 34);
-}
-
-.fare_type_box .fare_types .fare_type .ft_ra {
-    width: 100%;
-    border: 1px solid rgb(228, 228, 228);
-    background: rgb(255, 255, 255);
-    border-radius: 21px;
-    padding: 12px 13px;
-    display: flex;
-    position: relative;
-    -webkit-box-align: center;
-    align-items: center;
-    cursor: pointer;
-
-}
-
-form .fare_type_box .fare_types .fare_type input[type="radio"] {
-    /* Hide the default radio button */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* Define a custom size for the square */
+.ft_ra input[type="radio"] {
     width: 20px;
-    height: 20px;
-    /* Define a border and background for the square */
-    border: 1px solid var(--fv_prime);
-    background-color: #fff;
-    /* Position the square relative to its container */
-    position: relative;
 }
 
-/* Style for the checked state */
-form .fare_type_box .fare_types .fare_type input[type="radio"]:checked::before {
-    /* Create a pseudo-element to represent the checked state */
-    content: "";
-    /* Define the appearance of the pseudo-element (a square inside the square) */
-    width: 10px;
-    height: 10px;
-    background-color: var(--fv_sec);
-    /* Position the pseudo-element at the center of the square */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Ensure the pseudo-element is rendered above the square */
-    z-index: 1;
+.ft_ra img {
+    display: inline-block;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ft_ra input[type="radio"]:checked+label img {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ft_ra label {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.ft_ra label:hover {
+    color: #007bff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .fare_types {
+        gap: 10px;
+    }
+
+    .fare_type {
+        width: 45%;
+        padding: 4px;
+    }
+
+    .special_fare {
+        font-size: 1.3rem;
+    }
 }
 
 .passengers {
@@ -570,7 +621,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .tabs {
-    /* background-color: var(--fv_sec); */
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -585,7 +635,9 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     text-align: center;
     font-size: small;
-}
+    height: 80px;
+}   
+
 
 .top-tabs {
     display: grid;
@@ -598,8 +650,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--fv_sec);
 }
 
-.second-tabs span 
-{
+.second-tabs span {
     font-weight: 600;
     color: var(--fv_sec);
 }
@@ -612,6 +663,14 @@ input[type="number"]::-webkit-outer-spin-button {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     text-align: center;
 }
+.top-tabs li a img:hover{
+    width: 45px;
+    height: 45px;    
+}
+.second-tabs li a img:hover{
+    width: 45px;
+    height: 45px;    
+}
 
 .tabs img {
     width: 40px;
@@ -621,13 +680,20 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .second-tabs {
     list-style-type: none;
-    background-color: #fff;
-    padding: 1rem;
+    background-color: #f4f4f5;
+    /* padding: 1rem; */
     border-radius: 6px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.second-tabs li {
+    background-color: white;
+    border-radius: 6px;
+    padding: 2px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    text-align: center;
 }
 
 /* offcanvas */
@@ -731,12 +797,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-form .search_btn {
+/* form .search_btn {
     right: auto;
     left: 50%;
     width: max-content;
 }
 
+*/
 .location {
     position: relative;
 }
@@ -817,16 +884,15 @@ form .search_btn {
 }
 
 @media screen and (max-width: 1024px) {
+    .search_forms {
+        align-items: normal;
+    }
+
     .vu-suggestion {
         position: fixed;
         top: 40%;
         left: 50%;
         transform: translate(-50%, 0);
-    }
-
-    .fare_type_box .aic {
-        flex-direction: column;
-        gap: 1rem;
     }
 
     .hotel_form .card {
@@ -847,8 +913,8 @@ form .search_btn {
     .pax {
         border-collapse: collapse;
         border-width: 2px;
-        border-radius: 0;
-        background: #f7f7f7;
+        border-radius: 8px;
+        background: white;
     }
 
     .vu-content {
@@ -873,12 +939,17 @@ form .search_btn {
     form .fields,
     form .fields .wrapper {
         gap: 0;
-        margin: 0;
+        margin: 5px;
         padding: 0;
     }
 
+    span.tw-icon {
+        font-size: 1.1rem;
+        height: 20px;
+        width: 20px;
+    }
+
     :is(.vu-select, .vu-date, .pax) label {
-        top: -4px;
         background-color: transparent;
     }
 
@@ -886,22 +957,17 @@ form .search_btn {
         flex-direction: column;
     }
 
-    
+
 
     .destiantions .wrapper {
         justify-content: space-between;
         align-items: center;
     }
 
-    .fare_type_box {
-        gap: 0;
-        margin: 0;
-    }
-
-    .ft_ra {
-        padding: 1rem;
+    /* .ft_ra {
         width: max-content !important;
-    }
+        padding-left: 13px;
+    } */
 
     .trip_types {
         flex-direction: row;
@@ -909,6 +975,7 @@ form .search_btn {
         align-items: center;
         position: static !important;
     }
+
 
 }
 
@@ -926,7 +993,8 @@ form .search_btn {
     }
 
     .forms_wrapper .form_types .form_type i {
-        margin: 0 0 5px 0;
+        height: 20px;
+        width: 20px;
     }
 
     .offcanvas form .fields {
@@ -949,38 +1017,34 @@ form .search_btn {
 }
 
 @media screen and (max-width: 768px) {
+    .forms_main {
+        display: flex;
+        justify-self: center;
+    }
 
     .forms_wrapper .form_types {
         transform: translate(0);
-        box-shadow: none;
         border-radius: 10px 10px 0 0;
         margin: 0;
-        width: 100%;
+        width: fit-content;
         border-bottom: 1px solid rgb(225, 231, 238);
     }
 
 
     .forms_wrapper .form_types .form_type {
-        flex: 1;
         border-radius: 0;
     }
 
     .forms_wrapper form {
-        padding: 0;
         width: 100%;
-        border-radius: 0 0 10px 10px;
+        padding: 0;
     }
 
-    form .search_btn {
-        position: relative;
-        transform: translate(0);
-        left: 0;
-        right: 0;
-        border-radius: 0;
+    /* form .search_btn {
         width: 100%;
         border-radius: 0 0 10px 10px;
         padding: 2rem;
-    }
+    } */
 
     .trip_types {
         flex-direction: row !important;
@@ -1004,13 +1068,35 @@ form .search_btn {
         display: flex;
     }
 
-    .ft_ra {
-        gap: 1rem;
-    }
 
     .ft_ra img {
         width: 20px;
         height: 20px;
+    }
+
+    /*  */
+    .pax .desc,
+    :is(.vu-select, .vu-date) input {
+        font-size: x-small;
+            padding-left: 13px;
+    }
+
+    .vu-select,
+    .dates,
+    .pax {
+        height: auto;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .forms_wrapper .form_types .form_type p {
+        display: none;
+    }
+
+    .trip_types {
+        flex-direction: column-reverse !important;
+        gap: 1rem;
     }
 }
 
@@ -1019,16 +1105,6 @@ form .search_btn {
         display: inline-block;
         width: max-content;
         font-weight: 600;
-    }
-
-    .fare_type_box {
-        padding: 4px 1rem;
-        font-weight: 600;
-    }
-
-    .pax .desc,
-    :is(.vu-select, .vu-date) input {
-        font-size: small;
     }
 
     form .trip_types .trip_type {
@@ -1041,17 +1117,14 @@ form .search_btn {
 
     .vu-select,
     .vu-content {
-        padding: 1rem 0;
+        padding: 0;
         font-size: small;
+        border-radius: 8px;
+        background-color: white;
     }
 
     .dates-wrap .wrapper .col-6+.col-6 {
         margin: 0 !important;
-    }
-
-    .trip_types {
-        flex-direction: column-reverse !important;
-        gap: 1rem;
     }
 
     .forms_wrapper {
@@ -1059,17 +1132,13 @@ form .search_btn {
     }
 
     .forms_wrapper .form_types .form_type {
-        padding: 5px;
+        padding: 10px;
     }
 
     .forms_wrapper .form_types .form_type i {
         --dim: 32px;
         margin: 0;
         font-size: 1.4rem;
-    }
-
-    .forms_wrapper .form_types .form_type p {
-        display: none;
     }
 
     .destination .details .detail {
@@ -1087,12 +1156,80 @@ form .search_btn {
     .pax .vu-suggest .counters {
         gap: 4px;
     }
+
     .counter i {
         width: 20px;
+    }
+
+    .position_drage_1 {
+        top: 26px;
+        left: -186px;
+    }
+
+    .position_drage_2 {
+        top: 26px;
+        left: -160px;
     }
 }
 
 
+@media screen and (min-width: 1025px) {
+    .forms_wrapper {
+        padding: 10px 40px 0px;
+    }
 
+    .trip_types {
+        margin-bottom: 18px;
+    }
 
+    .flight_form .fields {
+        justify-content: space-between;
+        margin: 0px 20px;
+    }
 
+    .wrapper {
+        padding: 0;
+    }
+
+    .vu-select,
+    .vu-date,
+    .vu-content,
+    .dates,
+    .pax {
+        height: 95px;
+    }
+
+    .vu-content {
+        padding: 0px 10px;
+    }
+
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+    .fare_type_box {
+        margin: 15px;
+    }
+
+    .fare_type {
+        width: max-content;
+    }
+
+    .ft_ra {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        width: max-content;
+    }
+
+    .fare_type_box_header {
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .special_fare {
+        font-size: 2rem;
+    }
+}

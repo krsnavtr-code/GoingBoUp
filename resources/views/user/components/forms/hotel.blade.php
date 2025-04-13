@@ -32,21 +32,7 @@
 
 
 <form action='/hotel/search_results' id="hotel_search_form" method="get" class="hotel_form" onsubmit="return validateForm()">
-
-
     <div class="trip_types ">
-        <div class="rflex " >
-            <div class="trip_type">
-                <input type="radio" name="CountryType" class="" value="IN" checked>
-                <span class="">India</span>
-            </div>
-
-            <div class="trip_type">
-                <input type="radio" name="CountryType" class="international-radio-btn">
-                <span class=""> International </span>
-            </div>
-        </div>
-        
         <div class="vu-select cou-select" style="display: none;">
             <div class="vu-content cou-content">
                 <label for="">Country</label>
@@ -65,6 +51,21 @@
                 @endforeach
             </div>
         </div>
+
+
+        <div class="rflex">
+            <div class="trip_type" style="border-radius: 10px 0px 0px 10px;">
+                <input type="radio" name="CountryType" class="" value="IN" checked>
+                <span class="">India</span>
+            </div>
+
+            <div class="trip_type" style="border-radius: 0px 10px 10px 0px;">
+                <input type="radio" name="CountryType" class="international-radio-btn">
+                <span class=""> International </span>
+            </div>
+        </div>
+        
+        
       
 
         <div class="offer-box" style="margin-left:auto; ">
@@ -199,8 +200,9 @@
     </div>
 
 
-    <button type="submit" id="search_btn" class="btn search_btn"><i class="fa-solid fa-magnifying-glass"></i>Search Hotels </button>
-
+    <div class="flight_form_button">
+        <button type="submit" id="search_btn" class="btn search_btn"><i class="fa-solid fa-magnifying-glass"></i>Search Hotels </button>
+    </div>
 
 </form>
 

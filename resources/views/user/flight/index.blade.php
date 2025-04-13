@@ -7,7 +7,7 @@
     }
 
     section .section_head {
-        padding: 20px;
+        padding: 10px 20px 0px;
     }
 
     section .section_head .view_all {
@@ -98,9 +98,9 @@
 
         
 
-        .desti-wrap:not(:nth-of-type(3n)) {
+        /* .desti-wrap:not(:nth-of-type(3n)) {
             width: 50%;
-        }
+        } */
 
     }
 
@@ -217,9 +217,9 @@ array("city" => "Kolkata", "code" => "CCU")
         <div class="section_head rflex jcsb aic">
             <h4 class="section_title">Popular Flight Routes</h4>
         </div>
-        <div class="row">
+        <div class="row gap-1">
             @foreach ($city as $origin)
-            <div class="desti-wrap col-12 col-s-6 col-l-3">
+            <div class="desti-wrap col-12 col-s-6 col-l-3" >
                 <div class="wrapper destination">
                     <div class="img-box">
                         <img loading="lazy" src="{{ url('images/flight/cities/'.$origin['name']. '.jpg' ) }}" alt="flightimage">

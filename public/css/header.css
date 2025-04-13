@@ -41,7 +41,7 @@ header {
 
 .header_main .web_logo {
     max-height: 24px;
-    max-width: 24px;
+    /* max-width: 24px; */
 }
 
 .prime_nav {
@@ -240,6 +240,9 @@ header .side_nav {
 }
 
 @media screen and (max-width: 700px) {
+    .header_main {
+        padding: 0px 5px ;
+    }
     #sidebar_opener {
         display: flex;
     }
