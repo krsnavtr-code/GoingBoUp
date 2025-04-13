@@ -6,18 +6,18 @@
 
         </a>
         <nav class="prime_nav rflex active">
-            <!-- <li>
+            <li>
                 <a href="{{ url('flight') }}">
                     <img src="{{ url('images/web assets/icon-1.png') }}" style="padding: 4px;" class="web_logo " alt="logo">
                     <span style="margin: 0px 5px 0px 5px;">Flights</span>
                 </a>
-            </li> -->
-            <!-- <li>
+            </li>
+            <li>
                 <a href="{{ url('hotel') }}">
                     <img src="{{ url('images/web assets/icon-3.png') }}" style="padding-bottom: 5px;" class="web_logo" alt="logo">
                     <span style="margin: 0px 0px 0px 5px;">Hotels</span>
                 </a>
-            </li> -->
+            </li>
             <!-- <li>
                 <a href="{{ url('') }}"> 
                     <img src="{{ url('images/web assets/bus-logo.png') }}" class="web_logo"  alt="logo">
@@ -63,12 +63,12 @@
                     <span>Blogs</span>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="<?php echo e(url('blogs')); ?>">
                     <i class="fa-solid fa-question"></i>
                     <span>Need Help</span>
                 </a>
-            </li>
+            </li> -->
             
         </nav>
         <nav class="sec_nav rflex aic">
