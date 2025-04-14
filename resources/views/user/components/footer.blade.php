@@ -145,9 +145,26 @@
                 <span> <a href={{url('flight/search?journey_type=1&from=BOM&to=GOI&dep_date=' . date("Y-m-d"))}} data-msg = "Getting Available Filghts..."> Mumbai to Goa Indigo Flight </a> </span> 
             </div>
         </section>
-        <section class="copyright">
+        <!-- <section class="copyright">
             <img src = "{{url('images/web assets/cards.png')}}" alt="image">
-            <p>&copy; Copyright 2022-23 <a href="">Goingbo (INDIA)</a> All rights reserved</p>
+            <p>&copy; Copyright 2022-23 <a href="{{url('about')}}">Goingbo (INDIA)</a> All rights reserved</p>
+        </section> -->
+        <section class="copyright">
+            <img src="{{ url('images/web assets/cards.png') }}" alt="image  ">
+            <p>
+                &copy; Copyright 
+                <span id="copyright-year"></span>
+                <a href="{{ url('about') }}">Goingbo (INDIA)</a> All rights reserved
+            </p>
         </section>
     </div>
 </footer>
+
+@push('js')
+<script>
+    const startYear = 2022;
+    const currentYear = new Date().getFullYear();
+    const displayYear = (startYear === currentYear) ? `${startYear}` : `${startYear}-${currentYear.toString().slice(-2)}`;
+    document.getElementById('copyright-year').textContent = displayYear;
+</script>
+@endpush

@@ -43,7 +43,11 @@ footer{
     color: var(--fv_prime);
 }
 .copyright {
-    padding: 20px;
+    width: 100%;
+    background: black;
+    color: #fff;
+    padding: 20px 20px;
+    border-radius: 10px;
     border-top: 2px solid var(--gray_300);
 }
 .copyright p {
