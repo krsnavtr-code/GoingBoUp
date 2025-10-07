@@ -95,6 +95,10 @@ body {
     position: absolute;
     border-radius: 8px;
 }
+.form_type a {
+    color: black;
+    text-decoration: none;
+}
 
 .forms_wrapper form {
     background: #ffffffc7;
@@ -308,6 +312,8 @@ form .search_btn {
 form .search_btn:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+    background: var(--fv_sec);
 }
 
 form .search_btn i {

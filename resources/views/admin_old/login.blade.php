@@ -18,8 +18,8 @@
     <!-- html page Theme Color -->
     <meta name="theme-color" content="#002346" />
     <!-- html page icons -->
-    <link rel="icon" href="{{ url('images/web assets/logo_mini.jpeg') }}" type="image/png" />
-    <link rel="apple-touch-icon" href="{{ url('images/web assets/logo_mini.jpeg') }}" />
+    <link rel="icon" href="{{ url('images/web-assets/logo_mini.jpeg') }}" type="image/png" />
+    <link rel="apple-touch-icon" href="{{ url('images/web-assets/logo_mini.jpeg') }}" />
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="{{ url('css/style.php') }}">
     <link rel="stylesheet" href="{{ url('icon/css/all.min.css') }}">

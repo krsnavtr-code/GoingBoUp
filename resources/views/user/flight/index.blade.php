@@ -2,149 +2,104 @@
 @push('css')
 <link rel="stylesheet" href="css/index.css">
 <style>
-    section.destinations {
-        padding-inline: 50px;
-    }
+    /* Section base */
+.destinations {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  color: #222;
+}
 
-    section .section_head {
-        padding: 10px 20px 0px;
-    }
+.section_head {
+  margin-bottom: 30px;
+}
 
-    section .section_head .view_all {
-        color: var(--fv_sec);
-        font-weight: 600;
-        font-size: 1.4rem;
-        border-bottom: 1.6px solid;
-    }
+.section_title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  width: 100%;
+}
 
-    section .section_head .view_all i {
-        margin-left: 7px;
-    }
+/* Grid layout */
+.flights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
 
-    .destination {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 0 5px 0 #00000033;
-    }
+/* Flight card */
+.flight-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-    .destination .img-box {
-        width: 100%;
-        overflow: hidden;
-        height: 200px;
-    }
+.flight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
 
-    .destination .img-box img {
-        width: 100%;
-        height: 100%;
-        transition: all 2s ease-in-out;
-    }
+/* Image box */
+.img-box {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
 
-    .destination .img-box:hover img {
-        transform: scale(1.2);
-    }
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
 
-    .destination .text-box {
-        padding: 1rem;
-    }
+.flight-card:hover .img-box img {
+  transform: scale(1.1);
+}
 
-    .destination .heading {
-        color: #000;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+/* Text content */
+.text-box {
+  padding: 16px 20px;
+  text-align: center;
+}
 
+.text-box .heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
 
-    .destination .heading span {
-    color: var(--fv_sec);
-    }
+.text-box .heading span {
+  color: #007bff;
+}
 
-    .destination .details .detail .country {
-        padding: 3px 15px;
-        width: max-content;
-        border-radius: 100px;
-        background: #ffffff;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        color: var(--fv_prime);
-    }
+/* Destination list */
+.destination-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.destination-list li {
+  margin: 6px 0;
+}
 
+.flight-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
 
-    .destination .packages {
-        padding-left: 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-content: space-between;
-        font-weight: 600;
-        font-size: 1.4rem;
-    }
-    .destination li a {
-        font-size: 1.4rem;
-        color: var(--fv_prime);
-    }
-    .destination li:hover a {
-        color: var(--fv_sec);
-    }
-
-    @media screen and (max-width: 768px) {
-        section.destinations {
-            padding: 1rem;
-        }
-
-        
-
-        /* .desti-wrap:not(:nth-of-type(3n)) {
-            width: 50%;
-        } */
-
-    }
-
-    .col-border-none {
-        --tw-border-opacity: 1;
-        border-color: rgb(var(--neutral-100)/var(--tw-border-opacity));
-        border-width: 1px;
-        border-radius: 10px;
-
-    }
-
-    .flight-link {
-        color: #000;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .flight-link:hover {
-        color: #ff5e00;
-        /* Change text color on hover */
-    }
-
-    @media only screen and (max-width:600px) {
-   
-        section.destinations {
-            padding: 0;
-        }
-        .desti-wrap:not(:nth-of-type(3n)) 
-        .destination .packages {
-            display: block;
-        }
-    }
-
-    @media only screen and (max-width:360px) {
-        .destination .details {
-            padding: 0;
-        }
-
-        .flight-link {
-            padding: 0;
-            font-size: 10px;
-            line-height: 18px;
-        }
-    }
+.flight-link:hover {
+  color: #007bff;
+}
 </style>
 @endpush
 @section('main')
@@ -213,34 +168,47 @@ array("city" => "Kolkata", "code" => "CCU")
 <main>
     @include('user.components.forms.form')
 
-    <section id="popularFlights" class="destinations">
-        <div class="section_head rflex jcsb aic">
-            <h4 class="section_title">Popular Flight Routes</h4>
+<section id="popularFlights" class="destinations">
+  <div class="section_head rflex jcsb aic">
+    <h4 class="section_title">Popular Flight Routes</h4>
+  </div>
+
+  <div class="flights-grid">
+    @foreach ($city as $origin)
+      <div class="flight-card">
+        <div class="img-box">
+          <img
+            loading="lazy"
+            src="{{ url('images/flight/cities/' . $origin['name'] . '.jpg') }}"
+            alt="{{ $origin['name'] }} flights"
+          />
         </div>
-        <div class="row gap-1">
-            @foreach ($city as $origin)
-            <div class="desti-wrap col-12 col-s-6 col-l-3" >
-                <div class="wrapper destination">
-                    <div class="img-box">
-                        <img loading="lazy" src="{{ url('images/flight/cities/'.$origin['name']. '.jpg' ) }}" alt="flightimage">
-                    </div>
-                    <div class="text-box">
-                        <h6 class="heading">Flights <span>{{$origin['name']}}</span> To </h6>
-                        <div class="detail">
-                            <ul class="packages">
-                                @foreach ($flight[$origin['name']] as $destination)
-                                <li>
-                                    <a href="{{url('flight/search?journey_type=1&from='.$origin['code'].'&to='.$destination['code'].'&dep_date=' . date("Y-m-d"))}}" data-msg="Getting Available Flights..." target="blank" class="flight-link">{{$destination['city']}}</a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        <div class="text-box">
+          <h6 class="heading">
+            Flights <span>{{ $origin['name'] }}</span> To
+          </h6>
+
+          <ul class="destination-list">
+            @foreach ($flight[$origin['name']] as $destination)
+              <li>
+                <a
+                  href="{{ url('flight/search?journey_type=1&from=' . $origin['code'] . '&to=' . $destination['code'] . '&dep_date=' . date('Y-m-d')) }}"
+                  data-msg="Getting Available Flights..."
+                  target="_blank"
+                  class="flight-link"
+                >
+                  {{ $destination['city'] }}
+                </a>
+              </li>
             @endforeach
+          </ul>
         </div>
-    </section>
+      </div>
+    @endforeach
+  </div>
+</section>
+
 </main>
 @endsection
 

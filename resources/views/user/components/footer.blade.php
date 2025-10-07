@@ -1,3 +1,153 @@
+<style>
+    footer {
+  background: #0a0a23; /* Deep navy blue tone */
+  color: #e5e5e5;
+  font-family: "Poppins", sans-serif;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  line-height: 1.8;
+  position: relative;
+}
+
+footer .nav_links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer_block_title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer_block_title::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: #007bff;
+  bottom: -8px;
+  left: 0;
+  border-radius: 2px;
+}
+
+.footer_block_links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer_block_links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer_block_links a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* --- Popular Destinations Section --- */
+.destine {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.popular_destinations {
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+  align-items: center;
+}
+
+.popular_destinations span:first-child {
+  flex-basis: 100%;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.popular_destinations a {
+  color: #9bc1ff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.popular_destinations a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* --- Copyright Section --- */
+.copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.copyright img {
+  height: 32px;
+  opacity: 0.9;
+}
+
+.copyright p {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.copyright a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Styling --- */
+@media (max-width: 768px) {
+  footer {
+    padding-inline: 25px;
+  }
+
+  .footer_block_title {
+    font-size: 1rem;
+  }
+
+  .footer_block_links a {
+    font-size: 0.9rem;
+  }
+
+  .popular_destinations {
+    font-size: 0.9rem;
+  }
+
+  .copyright {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+</style>
+
+
 <footer>
     <div style="padding-inline: 50px; ">
         <section class="row nav_links">
@@ -146,11 +296,11 @@
             </div>
         </section>
         <!-- <section class="copyright">
-            <img src = "{{url('images/web assets/cards.png')}}" alt="image">
+            <img src = "{{url('images/web-assets/cards.png')}}" alt="image">
             <p>&copy; Copyright 2022-23 <a href="{{url('about')}}">Goingbo (INDIA)</a> All rights reserved</p>
         </section> -->
         <section class="copyright">
-            <img src="{{ url('images/web assets/cards.png') }}" alt="image  ">
+            <img src="{{ url('images/web-assets/cards.png') }}" alt="image  ">
             <p>
                 &copy; Copyright 
                 <span id="copyright-year"></span>

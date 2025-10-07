@@ -32,6 +32,7 @@
 
     <!-- Title Tag for website -->
     <title>{{ $data['page_title'] ?? '' ?: $universal['page_title'] ?? '' ?: 'Traveller Detail' }}</title>
+    <!-- <title>@yield('title')</title> -->
 
     <!-- Meta Keywords -->
     <meta name="keywords"
@@ -57,8 +58,8 @@
     <!-- html page Theme Color -->
     <meta name="theme-color" content="#002346" />
     <!-- html page icons -->
-    <link rel="icon" href="{{ url('images/web assets/logo.png') }}" type="image/png" />
-    <link rel="apple-touch-icon" href="{{ url('images/web assets/logo.png') }}" />
+    <link rel="icon" href="{{ url('images/web-assets/logo.png') }}" type="image/png" />
+    <link rel="apple-touch-icon" href="{{ url('images/web-assets/logo.png') }}" />
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="{{ url('icon/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/style.php') }}">
@@ -70,7 +71,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
@@ -123,6 +124,7 @@
         }
     </script>
     <!-- Other Scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     @stack('js')
 </body>
 

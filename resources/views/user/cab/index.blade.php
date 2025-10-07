@@ -169,22 +169,22 @@
         
         {{-- <div class="trip_types rflex jcc wrap">
             <div class="trip_type cflex jcse aic" style="--i:1;">
-                <img src="{{url("images\web assets\icon-4.png")}}"  alt="cab">
+                <img src="{{url("images\web-assets\icon-4.png")}}"  alt="cab">
                 <h6>One Way</h6>
                 <a href="{{url("cab/One-Way")}}">Book Ride</a>
             </div>
             <div class="trip_type cflex jcse aic" style="--i:2;">
-                <img src="{{url("images\web assets\icon-4.png")}}"  alt="cab">
+                <img src="{{url("images\web-assets\icon-4.png")}}"  alt="cab">
                 <h6>Round Trip</h6>
                 <a href="{{url("cab/Round-Trip")}}">Book Ride</a>
             </div>
             <div class="trip_type cflex jcse aic" style="--i:3;">
-                <img src="{{url("images\web assets\icon-4.png")}}"  alt="cab">
+                <img src="{{url("images\web-assets\icon-4.png")}}"  alt="cab">
                 <h6> Airport Transfer </h6>
                 <a href="{{url("cab/Airport-Transfer")}}"> Book Ride </a>
             </div>
             <div class="trip_type cflex jcse aic" style="--i:4;">
-                <img src="{{url("images\web assets\icon-4.png")}}"  alt="cab">
+                <img src="{{url("images\web-assets\icon-4.png")}}"  alt="cab">
                 <h6> Daily Rental  </h6>
                 <a href="{{url("cab/Daily-Rental")}}"> Book Ride </a>
             </div>
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="custom-modal-image">
-                    <img src="{{ asset('images/web assets/taxi_car_modal.jpg') }}" alt="Yellow Car" class="car-image" style="border-radius: 6px; ">
+                    <img src="{{ asset('images/web-assets/taxi_car_modal.jpg') }}" alt="Yellow Car" class="car-image" style="border-radius: 6px; ">
                 </div>
                 <span class="close" id="closeModal">&times;</span>
             </div>

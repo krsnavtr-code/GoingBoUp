@@ -1,1 +1,1 @@
-{"Status":1,"TokenId":"7174d2ea-5a73-412f-8201-3e8dc58efeb5","Error":{"ErrorCode":0,"ErrorMessage":""},"Member":{"FirstName":"Anand","LastName":"Shekhar","Email":"anand24h@gmail.com","MemberId":116906,"AgencyId":93682,"LoginName":"DELG738","LoginDetails":"Login Success at#@ 12\/06\/2024 11:06:47 #@ IPAddress: 122.161.74.108","isPrimaryAgent":false},"date":"26"}
+{"Status":2,"TokenId":null,"Error":{"ErrorCode":1,"ErrorMessage":"You are not authorized to access TBO API"},"date":"07"}

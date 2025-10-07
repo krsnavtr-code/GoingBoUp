@@ -19,8 +19,8 @@
     <title>{{ isset($admin['emp_username']) ? ucfirst($admin['emp_username']) : '' }} Account</title>
     <meta name="theme-color" content="#002346" />
     <!-- html page icons -->
-    <link rel="icon" href="{{ url('images/web assets/logo.png') }}" type="image/png" />
-    <link rel="apple-touch-icon" href="{{ url('images/web assets/logo.png') }}" />
+    <link rel="icon" href="{{ url('images/web-assets/logo.png') }}" type="image/png" />
+    <link rel="apple-touch-icon" href="{{ url('images/web-assets/logo.png') }}" />
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="{{ url('css/style.php') }}">
     <link rel="stylesheet" href="{{ url('icon/css/all.min.css') }}">

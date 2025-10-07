@@ -95,9 +95,9 @@
 @endphp
 
 <div class="search_forms cflex">
-    <div class="background">
+    <!-- <div class="background"> -->
         <!-- <img src="{{ asset('images/flight/planes-runway.png') }}" alt="flight" style="width: 100%; height: 100%;"> -->
-    </div>
+    <!-- </div> -->
     <div class="forms_wrapper">
         <div class="forms_main">
             <div class="form_types">
@@ -113,19 +113,20 @@
                         <p>Hotel</p>
                     </a>
                 </div>
-                {{--<div class="form_type cab {{ $activeForm == 'cab' ? 'active' : '' }}">
-                    <i class="icon fa-solid fa-taxi"></i>
-                    <p>Cab</p>
+                <div class="form_type cab {{ $activeForm == 'cab' ? 'active' : '' }}">
+                    <a href="{{ url('cab') }}">
+                        <i class="icon fa-solid fa-taxi"></i>
+                        <p>Cab</p>
+                    </a>
                 </div>
                 <div class="form_type bus {{ $activeForm == 'bus' ? 'active' : '' }}">
-                    <i class="icon fa-solid fa-bus-simple"></i>
-                    <p>Bus</p>
-                </div>--}}
+                    <a href="{{ url('bus') }}">
+                        <i class="icon fa-solid fa-bus-simple"></i>
+                        <p>Bus</p>
+                    </a>
+                </div>
                 
             </div>
-            {{-- <div class="form_text">
-                <div>We Have Great Destination For You</div>
-            </div> --}}
         </div>
         
         <div class="flight_form" style="{{ $activeForm == 'flight' ? 'display: block;' : 'display: none;' }}">

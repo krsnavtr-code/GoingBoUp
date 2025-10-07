@@ -268,9 +268,9 @@ Route::prefix('special-hotel')->group(function () {
 });
 
 
-Route::prefix('bus')->controller(BusController::class)->group(function () {
-    Route::get('', 'ui_search');
-    Route::post('', 'web_search');
+Route::prefix('bus')->controller(BusController::class)->name('bus.')->group(function () {
+    Route::get('', 'ui_search')->name('search');
+    Route::post('', 'web_search')->name('search.submit');
 });
 
 

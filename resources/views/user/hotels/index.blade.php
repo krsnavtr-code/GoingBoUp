@@ -1,419 +1,339 @@
 @extends('user.components.layout')
 @push('css')
-    <link rel="stylesheet" href="css/index.css">
-    <style>
-        section.destinations {
-            padding-inline: 50px;
+<link rel="stylesheet" href="css/index.css">
+
+<style>
+    /* ====== SECTION STYLES ====== */
+    .popular-hotels-section {
+        background: #f9fafc;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .modern-btn {
+        background: linear-gradient(90deg, #007bff, #00b4d8);
+        color: white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .modern-btn:hover {
+        transform: scale(1.05);
+        background: linear-gradient(90deg, #0062cc, #0096c7);
+    }
+
+    /* ====== HOTEL GRID ====== */
+    .hotel-grid {
+        display: grid;
+        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .hotel-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .hotel-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .hotel-img img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .hotel-info {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .hotel-info h6 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    .hotel-info span {
+        color: #007bff;
+    }
+
+    .search-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background: #007bff;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .search-btn:hover {
+        background: #0056b3;
+    }
+
+    /* ====== MODAL ====== */
+    .modern-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .modal-wrapper {
+        display: flex;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        max-width: 900px;
+        width: 100%;
+        animation: scaleUp 0.3s ease;
+    }
+
+    @keyframes scaleUp {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
         }
 
-        section .section_head {
-            padding: 20px;
+        to {
+            transform: scale(1);
+            opacity: 1;
         }
+    }
 
-        section .section_head .view_all {
-            color: var(--fv_sec);
-            font-weight: 600;
-            font-size: 1.4rem;
-            border-bottom: 1.6px solid;
-        }
+    .modal-content {
+        flex: 1;
+        padding: 30px;
+    }
 
-        section .section_head .view_all i {
-            margin-left: 7px;
-        }
+    .modal-image {
+        flex: 1;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .destination {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 0 5px 0 #00000033;
-        }
+    .modal-image img {
+        width: 90%;
+        border-radius: 8px;
+    }
 
-        .destination img {
-            width: 100%;
-            height: 100%;
-            transition: all 0.3s;
-        }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .destination:hover img {
-            scale: 1.1;
-        }
+    .close-btn {
+        font-size: 24px;
+        cursor: pointer;
+        color: #64748b;
+    }
 
-        .destination .details {
-            padding: 10px;
-            inset-inline: 0;
-            bottom: 0;
-            position: absolute;
-        }
+    .close-btn:hover {
+        color: #ef4444;
+    }
 
-        .destination .details .detail {
-            background: #ffffff88;
-            padding: 10px 20px;
-            border-radius: 6px;
-            backdrop-filter: blur(1px);
-        }
+    /* ====== FORM ====== */
+    .modern-form .input-group {
+        position: relative;
+        margin-bottom: 18px;
+    }
 
-        .destination .details .detail .country {
-            padding: 3px 15px;
-            width: max-content;
-            border-radius: 100px;
-            background: #ffffff;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: var(--fv_prime);
-        }
+    .input-group i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #64748b;
+    }
 
-        .destination .details .detail .desti {
-            margin-block: 3px 2px;
-            color:  blue;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+    .input-group input {
+        width: 100%;
+        padding: 10px 12px 10px 38px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        transition: border-color 0.3s;
+    }
 
-        .destination .details .detail .packages {
-            font-size: 1.2rem;
-        }
+    .input-group input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
 
-        .destination .details .detail .packages span {
-            font-weight: bold;
-            font-size: 1.4rem;
-            margin-right: 5px;
-        }
+    .password-group .toggle-password {
+        position: absolute;
+        right: 12px;
+        cursor: pointer;
+        color: #64748b;
+    }
 
-        @media screen and (max-width: 500px) {
-            section.destinations {
-                padding-inline: 0px;
-            }
+    .checkbox {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-bottom: 15px;
+    }
 
-            .desti-wrap:not(:nth-of-type(3n)) {
-                width: 50%;
-            }
+    .checkbox a {
+        color: #007bff;
+    }
 
-        }
+    .full {
+        width: 100%;
+    }
 
-       
-        .col-border-none{
-            --tw-border-opacity: 1;
-            border-color: rgb(var(--neutral-100)/var(--tw-border-opacity));
-            border-width: 1px;
-            border-radius: 10px;
-
-        }
-
-        .flight-link {
-            color: #000; 
-            text-decoration: none;
-            transition: color 0.3s ease; 
-        }
-
-        .flight-link:hover {
-            color: #ff5e00; /* Change text color on hover */
-        }
-
-        #registerCabBtn{
-            position: absolute;
-            right: 20px;            
-            padding: 8px 30px;           
-            border: none;
-            font-size: 1.4rem;
-            font-weight: 600;
-            border-radius: 4px;
-            background-color: var(--fv_prime);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 60%;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: row;
-        }
-        .modal-content .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: none;
-        }
-        .modal-content .modal-body {
-            flex: 1;
-            padding: 2rem;
-        }
-        .modal-content .modal-footer {
-            border-top: none;
-        }
-        .car-image {
-            max-width: 100%;
-        }
-        .modal-content .custom-modal {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-content .custom-modal-content {
-            flex: 1;
-        }
-        .modal-content .custom-modal-image {
-            flex: 0 0 45%;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content .close {
-            cursor: pointer;
-            font-size: 2.5rem;
-            color: var(--fv_sec);
-        }
-        .modal-content .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        .modal-content  .form-group input {
-            width: 90%;
-            padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-            box-sizing: border-box;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            transition: border-color 0.3s;
-        }
-        .modal-content .form-group input:focus {
-            border-color: var(--fv_sec);
-            outline: none;
-        }
-        .modal-content .form-group .icon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--fv_sec);
-            font-size: 1.2rem;
-        }
-        .modal-content .form-group .toggle-password {
-            position: absolute;
-            top: 50%;
-            right: 0.5rem;
-            transform: translateY(-50%);
-            color: var(--fv_sec);
-            cursor: pointer;
-        }
-        .modal-content .btn {
-            padding: 0.75rem 1.5rem;
-            color: #fff;
-            background-color: var(--fv_sec);
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-        }
-        .modal-content .terms-link {
-            color: var(--fv_sec);
-            cursor: pointer;
-            text-decoration: underline;
-            margin-top: 1rem;
-        }
-        .modal-content .terms-checkbox {
-            display: flex;
-            align-items: center;
-            margin: 1rem;
-        }
-        .modal-content .terms-checkbox input {
-            margin-right: 0.5rem;
-        }
-        .modal-content .terms-checkbox i {
-            color: var(--fv_sec);
-            margin-right: 0.5rem;
-        }
-        .img-box {   
-            width: 100%;
-            overflow: hidden;
-            height: 200px;
-        }
-
-        .text-box {
-            padding: 1rem;
-        }
-
-        .text-box .heading {        
-            color: #000;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .detail .packages {
-            padding-left: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 1.4rem;
-
-        }
-
-        #otpForm, #successMessage {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        #otpForm .form-group, #successMessage p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        #successMessage p {
-            color: green;
-        }
-
-        #otpInput {
-            width: 50%;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    .success-text {
+        color: #16a34a;
+        text-align: center;
+        font-weight: 600;
+    }
+</style>
 @endpush
 @section('main')
 
-<main>
+<main class="popular-hotels-section">
     @include('user.components.forms.form')
-    
-    <section class="destinations">
-        <div class="section_head rflex jcsb aic">
-            <h4 class="section_title">Popular Hotels Destinations </h4>  
 
-            <button id="registerCabBtn">Register Your Hotels </button>
-        </div>  
+    <section class="destinations container mt-5 mb-5">
+        <div class="section-header">
+            <h4 class="section-title">Popular Hotel Destinations</h4>
+            <button id="registerCabBtn" class="modern-btn">Register Your Hotel</button>
+        </div>
+
 
         @php
-            use Carbon\Carbon;
-            $today = Carbon::now()->format('Y-m-d');
-            $returnDate = Carbon::now()->addDays(2)->format('Y-m-d');
-            $cities = [
-                [
-                    'name' => 'Delhi', 
-                    'whereinput' => 'Crowne+Plaza+New+Delhi+Rohini%2C+an+IHG+Hotel', 
-                    'image' => 'delhi.jpg'
-                ],
-                [
-                    'name' => 'Patna', 
-                    'whereinput' => 'The+Grand+Empire+%7C+Best+4+Star+Luxury+Hotel+in+Patna', 
-                    'image' => 'patna.jpeg'
-                ],
-                ['name' => 'Mumbai', 'whereinput' => 'Mumbai', 'image' => 'mumbai.jpg'],
-                ['name' => 'Kolkata', 'whereinput' => 'Kolkata', 'image' => 'kolkata.webp'],
-                ['name' => 'Chennai', 'whereinput' => 'Chennai', 'image' => 'chennai.jpg'],
-                ['name' => 'Goa', 'whereinput' => 'Goa', 'image' => 'goa.png'],
-                ['name' => 'Shimla', 'whereinput' => 'Shimla', 'image' => 'shimla.jfif'],
-                ['name' => 'Bengaluru', 'whereinput' => 'Bangalore', 'image' => 'bangalore.jpg'],
-            ];
+        use Carbon\Carbon;
+        $today = Carbon::now()->format('Y-m-d');
+        $returnDate = Carbon::now()->addDays(2)->format('Y-m-d');
+        $cities = [
+        [
+        'name' => 'Delhi',
+        'whereinput' => 'Crowne+Plaza+New+Delhi+Rohini%2C+an+IHG+Hotel',
+        'image' => 'delhi.jpg'
+        ],
+        [
+        'name' => 'Patna',
+        'whereinput' => 'The+Grand+Empire+%7C+Best+4+Star+Luxury+Hotel+in+Patna',
+        'image' => 'patna.jpeg'
+        ],
+        ['name' => 'Mumbai', 'whereinput' => 'Mumbai', 'image' => 'mumbai.jpg'],
+        ['name' => 'Kolkata', 'whereinput' => 'Kolkata', 'image' => 'kolkata.webp'],
+        ['name' => 'Chennai', 'whereinput' => 'Chennai', 'image' => 'chennai.jpg'],
+        ['name' => 'Goa', 'whereinput' => 'Goa', 'image' => 'goa.png'],
+        ['name' => 'Shimla', 'whereinput' => 'Shimla', 'image' => 'shimla.jfif'],
+        ['name' => 'Bengaluru', 'whereinput' => 'Bangalore', 'image' => 'bangalore.jpg'],
+        ];
         @endphp
 
-        <div class="row">
+        <div class="hotel-grid">
             @foreach($cities as $city)
-                <div class="desti-wrap col-12 col-s-6 col-l-3">
-                    <div class="wrapper destination">
-                        <div class="img-box">
-                            <img loading="lazy" src="{{ asset('images/hotel/cities/' . $city['image']) }}" alt="hotel image">
-                        </div>
-                        <div class="text-box">
-                            <h6 class="heading">Hotels <span>in</span> {{ $city['name'] }}</h6>
-                            <div class="detail">
-                                <a href="{{ url('/hotel/search_results?CountryType=IN&CountryCode=&country_extra_2=&country_extra_1=&whereinput=' . $city['whereinput'] . '&latitude=&longitude=&hotel_city=' . $city['name'] . '&location_city=&dep_date=' . $today . '&nights=2&ret_date=' . $returnDate . '&room=1&adult=1&child=0&child_ages=') }}" class="btn btn-primary">
-                                    Search Hotels in {{ $city['name'] }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="hotel-card">
+                <div class="hotel-img">
+                    <img loading="lazy" src="{{ asset('images/hotel/cities/' . $city['image']) }}" alt="Hotel in {{ $city['name'] }}">
                 </div>
+                <div class="hotel-info">
+                    <h6>Hotels in <span>{{ $city['name'] }}</span></h6>
+                    <a href="{{ url('/hotel/search_results?...') }}" class="search-btn">
+                        Search Hotels in {{ $city['name'] }}
+                    </a>
+                </div>
+            </div>
             @endforeach
         </div>
     </section>
-        
-        
 
-        <!-- The Modal -->
-        <div id="registerCabModal" class="modal">
-            <div class="modal-content">                                                                  
-                <div class="custom-modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"> Hotel Business Registration </h5>
-                        
-                    </div>
-                    <div class="modal-body">
-                        <!-- Step 1: Registration Form -->
-                        <form id="businessForm">
-                            @csrf
-                            <input type="hidden" name="business_type" value="hotel">
-                            <div class="form-group">
-                                <input type="text" id="companyName" name="companyName" placeholder="Enter Company Name" maxlength="50" required>
-                                <i class="fas fa-building icon"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="contactNo" name="contactNo" placeholder="Enter Contact No" pattern="\d{10}" title="Please enter exactly 10 digits" required>
-                                <i class="fas fa-phone icon"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Enter E-mail" maxlength="50" required>
-                                <i class="fas fa-envelope icon"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="city" name="city" placeholder="Enter City" maxlength="16" required>
-                                <i class="fas fa-city icon"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" id="password" name="password" placeholder="Enter Password" minlength="8" maxlength="16" required>
-                                <i class="fas fa-lock icon"></i>
-                                <i class="fas fa-eye toggle-password" id="togglePassword"></i>
-                            </div>
-                            <div class="terms-checkbox">
-                                <i class="fas fa-check-circle"></i>
-                                <label for="terms"> I agree above <a class="terms-link" href="#"> Terms And Conditions </a> </label> 
-                            </div>
-                            <button type="submit" class="btn"> Register Now </button>
-                        </form>
-                        <!-- Step 2: OTP Verification Form -->
-                        <div id="otpForm" style="display: none;">
-                            <p>An OTP has been sent to your email. Please enter it below:</p>
-                            <div class="form-group">
-                                <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" required>
-                                <i class="fas fa-key icon"></i>
-                            </div>
-                            <button type="button" class="btn" id="verifyOtpBtn">Verify OTP</button>
-                        </div>
+    <!-- Modern Modal -->
+    <div id="registerCabModal" class="modern-modal">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>🏨 Hotel Business Registration</h5>
+                    <span id="closeModal" class="close-btn">&times;</span>
+                </div>
 
-                        <!-- Success Message -->
-                        <div id="successMessage" style="display: none;">
-                            <p>Your form has been successfully submitted. Please check your email for login details.</p>
-                        </div>
+                <form id="businessForm" class="modern-form">
+                    @csrf
+                    <input type="hidden" name="business_type" value="hotel">
+
+                    <div class="input-group">
+                        <i class="fas fa-building"></i>
+                        <input type="text" name="companyName" placeholder="Company Name" required>
                     </div>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" name="contactNo" placeholder="Contact No (10 digits)" pattern="\d{10}" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-city"></i>
+                        <input type="text" name="city" placeholder="City" required>
+                    </div>
+                    <div class="input-group password-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Password" minlength="8" required>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+
+                    <label class="checkbox">
+                        <input type="checkbox" required> I agree to the
+                        <a href="#">Terms and Conditions</a>
+                    </label>
+
+                    <button type="submit" class="modern-btn full">Register Now</button>
+                </form>
+
+                <div id="otpForm" class="hidden">
+                    <p>An OTP has been sent to your email. Please enter it below:</p>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6" required>
+                    </div>
+                    <button class="modern-btn full" id="verifyOtpBtn">Verify OTP</button>
                 </div>
-                <div class="custom-modal-image">
-                    <img src="{{ asset('images/web assets/hotel_modal.png') }}" alt="Yellow Car" class="car-image" style="border-radius: 6px; ">
+
+                <div id="successMessage" class="hidden">
+                    <p class="success-text">✅ Registration successful! Please check your email for login details.</p>
                 </div>
-                <span class="close" id="closeModal">&times;</span>
+            </div>
+
+            <div class="modal-image">
+                <img src="{{ asset('images/web-assets/hotel_modal.png') }}" alt="Hotel Registration">
             </div>
         </div>
-        
+    </div>
 </main>
+
+
 @endsection
 
 @push('js')
@@ -471,7 +391,7 @@
 </script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         // Handle form submission
         $('#businessForm').on('submit', function(event) {
             event.preventDefault();
@@ -481,7 +401,7 @@
                 method: "POST",
                 data: $('#businessForm').serialize(),
                 success: function(response) {
-                    if(response.status == 'otp_sent') {
+                    if (response.status == 'otp_sent') {
                         // Show OTP input form
                         $('#businessForm').hide();
                         $('#otpForm').show();
@@ -501,7 +421,7 @@
                     otp: otp
                 },
                 success: function(response) {
-                    if(response.status == 'otp_verified') {
+                    if (response.status == 'otp_verified') {
                         // Submit the main form data to web_store after OTP is verified
                         $.ajax({
                             url: "{{ url('admin/business-login/register') }}",

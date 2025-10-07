@@ -2,54 +2,42 @@
     <div class="header_main">
         <a href="{{ url('/') }}" class="brand">
             <img src="{{ url('images/logo.png') }}" alt="logo">
-            <!-- <img src="../../../../../public/images/flight/planes-runway.png" alt=""> -->
-
         </a>
         <nav class="prime_nav rflex active">
-            <li>
-                <a href="{{ url('flight') }}">
-                    <img src="{{ url('images/web assets/icon-1.png') }}" style="padding: 4px;" class="web_logo " alt="logo">
-                    <span style="margin: 0px 5px 0px 5px;">Flights</span>
+            <li class="show-on-scroll-nav-item" style="transition: opacity 0.3s ease-in-out; z-index: 1000;">
+                <a href="{{ url('flight') }}" style="display: flex; align-items: center;">
+                    <img src="{{ url('images/web-assets/nobg-flight.png') }}" class="nav-link-image" alt="logo">
+                    Flights
                 </a>
             </li>
-            <li>
-                <a href="{{ url('hotel') }}">
-                    <img src="{{ url('images/web assets/icon-3.png') }}" style="padding-bottom: 5px;" class="web_logo" alt="logo">
-                    <span style="margin: 0px 0px 0px 5px;">Hotels</span>
+            <li class="show-on-scroll-nav-item" style="transition: opacity 0.3s ease-in-out; z-index: 1000;">
+                <a href="{{ url('hotel') }}" style="display: flex; align-items: center;">
+                    <img src="{{ url('images/web-assets/nobg-hotel.png') }}" class="nav-link-image" alt="logo">
+                    Hotels
                 </a>
             </li>
-            <!-- <li>
+            <li class="show-on-scroll-nav-item" style="transition: opacity 0.3s ease-in-out; z-index: 1000;">
                 <a href="{{ url('') }}"> 
-                    <img src="{{ url('images/web assets/bus-logo.png') }}" class="web_logo"  alt="logo">
-                    <span>Bus</span>
+                    <img src="{{ url('images/web-assets/nobg-bus.png') }}" class="nav-link-image"  alt="logo">
+                   Bus
                 </a>
-            </li>  -->
-            <li>
+            </li> 
+            <li class="show-on-scroll-nav-item" style="transition: opacity 0.3s ease-in-out; z-index: 1000;">
                 <a href="{{ url('cab') }}">
-                    <img src="{{ url('images/web assets/icon-4.png') }}" style="padding: 0 5px 6px 0;"  class="web_logo" alt="logo">
-                    <span> Cabs </span>
+                    <img src="{{ url('images/web-assets/nobg-cabs.png') }}"   class="nav-link-image" alt="logo">
+                    Cabs 
                 </a>
             </li>
             <li>
                 <a href="{{ url('packages') }}" target="_blank">
-                    <img src="{{ url('images/web assets/icon-2.png') }}" class="web_logo" alt="logo">
-                    <span style="margin: 0px 0px 0px 5px;">Holiday Packages</span>
+                    <img src="{{ url('images/web-assets/nobg-holiday-package.png') }}" class="nav-link-image" alt="logo">
+                    Holiday Packages
                 </a>
             </li>
 
-            <!-- <li class="special_box">
-                <a href="{{ url('special-hotel') }}" target="_blank">
-                    <h6 class="brand">
-                        <span>  Special Hotels </span>
-                    </h6>
-                </a>
-            </li>  -->
-
             <li class="club_box">
                 <a href="{{ url('membership') }}" target="_blank">
-                    <h6 class="brand"><span>G</span><span>BO </span>
-                    <span> Membership</span>
-                </h6>
+                    <span>G</span><span style="color: var(--fv_prime);">BO</span> Membership
                 </a>
                 <ul class="club">
                     <h5>Be a Member</h5>
@@ -59,17 +47,9 @@
             </li>
             <li>
                 <a href="{{ url('blogs') }}">
-                    <i class="fa-solid fa-blog"></i>
-                    <span>Blogs</span>
+                    Blogs
                 </a>
-            </li>
-            <!-- <li>
-                <a href="<?php echo e(url('blogs')); ?>">
-                    <i class="fa-solid fa-question"></i>
-                    <span>Need Help</span>
-                </a>
-            </li> -->
-            
+            </li>            
         </nav>
         <nav class="sec_nav rflex aic">
             @if (session()->has('user'))
@@ -115,19 +95,6 @@
                         <span>Hotel</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="{{ url('') }}">
-                        <i class="fa-solid fa-bus"></i>
-                        <span>Bus</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('') }}">
-                        <i class="fa-solid fa-train"></i>
-                        <span>Train</span>
-                    </a>
-                </li> --}}
-                {{-- <li><a href="{{ url('special-hotel') }}" target="_blank"><i class="fa-solid fa-hotel"></i><span   class="brand"><span>G</span><span>BO </span>   Special Hotels</span></a></li> --}}
                 <li><a href="{{ url('cab') }}" target="_blank"><i class="fa-solid fa-cab"></i><span
                             class="brand"><span>G</span><span>BO </span>
                               Special Cabs</span></a></li>
@@ -165,8 +132,51 @@
         </div>
     </div>
 </header>
+
+
 @push('js')
 <script>
+// Show/hide flights nav item on scroll
+document.addEventListener('DOMContentLoaded', function () {
+  const navItems = document.querySelectorAll('.show-on-scroll-nav-item');
+  const currentPath = window.location.pathname; // Get current URL path
+  let isVisible = false;
+
+  // Only apply scroll animation on /flight or /hotel pages
+  if (currentPath === '/' || currentPath === '/flight' || currentPath === '/hotel') {
+    // Start hidden
+    navItems.forEach((item) => {
+      item.style.display = 'none';
+    });
+
+    window.addEventListener('scroll', function () {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollThreshold = windowHeight * 0.5;
+
+      navItems.forEach((item) => {
+        if (scrollPosition > scrollThreshold && !isVisible) {
+          item.style.display = 'block';
+        } else if (scrollPosition <= scrollThreshold && isVisible) {
+          item.style.display = 'none';
+        }
+      });
+
+      isVisible = scrollPosition > scrollThreshold;
+    });
+  } else {
+    // On other pages — always visible
+    navItems.forEach((item) => {
+      item.style.display = 'block';
+    });
+  }
+});
+
+
+
+
+
+    // Original sidebar code
     document.addEventListener("DOMContentLoaded", function () {
     var sidebarOpener = document.getElementById("sidebar_opener");
     var sideNav = document.querySelector(".side_nav");

@@ -333,7 +333,7 @@
                 </div>
             </div>
             <div class="custom-modal-image">
-                <img src="{{ asset('images/web assets/taxi_car_modal.jpg') }}" alt="Yellow Car" class="car-image" style="border-radius: 6px; ">
+                <img src="{{ asset('images/web-assets/taxi_car_modal.jpg') }}" alt="Yellow Car" class="car-image" style="border-radius: 6px; ">
             </div>
             <span class="close" id="closeModal">&times;</span>
         </div>
@@ -352,7 +352,7 @@
             <img src="{{ url('/images/cab assets/index-icons/arrow-alt-right.png') }} " class = "1img" style="height: 3rem; width: 3rem; position: absolute; top: -20px; left: 27px; @if (Request::is('cab/One-Way') || Request::is('cab'))
             border-radius: 4.5px; background-color: var(--fv_prime);
             @endif">
-            <img src="{{ url('/images/web assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
+            <img src="{{ url('/images/web-assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
             <span style=" position: absolute; top: 72px; left: 4px; width: 100px;">One Way</span>
             </a>
         </div>
@@ -362,7 +362,7 @@
             <img src="{{ url('/images/cab assets/index-icons/plane-alt.png') }} "  style="height: 3rem; width: 3rem; position: absolute; top: -19px; left: 28px; @if (Request::is('cab/Airport-Transfer')) 
             border-radius: 4.5px; background-color: var(--fv_prime);
             @endif">
-            <img src="{{ url('/images/web assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
+            <img src="{{ url('/images/web-assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
             <span style=" position: absolute; top: 72px; left: 4px; width: 100px;">Airport Cabs</span>
             </a>
         </div>
@@ -372,7 +372,7 @@
             <img src="{{ url('/images/cab assets/index-icons/exchange-alt.png') }} " style="height: 2.6rem; width: 2.6rem; position: absolute; top: -19px; left: 25px;  @if (Request::is('cab/Round-Trip')) 
             border-radius: 4.5px; background-color: var(--fv_prime);
             @endif">
-            <img src="{{ url('/images/web assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
+            <img src="{{ url('/images/web-assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
             <span style=" position: absolute; top: 72px; left: 4px; width: 100px;">Round Trip</span>
             </a>
         </div>
@@ -382,7 +382,7 @@
             <img src="{{ url('/images/cab assets/index-icons/person-simple.png') }} "  style="height: 3rem; width: 3rem; position: absolute; top: -19px; left: 28px; @if (Request::is('cab/Daily-Rental')) 
             border-radius: 4.5px; background-color: var(--fv_prime);
             @endif">
-            <img src="{{ url('/images/web assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
+            <img src="{{ url('/images/web-assets/icon-4.png') }} "  style="height: 4rem; width: 10rem; position: absolute;  top:12px ">
             <span style=" position: absolute; top: 72px; left: 4px; width: 100px;">Daily Rental</span>
             </a>
         </div>
